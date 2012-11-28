@@ -39,9 +39,12 @@ setup_game()
 while True:
     prompt()
 
-    if selection == "roll" and rollsLeft > 0:
-        print "Rolling dice"
-        roll_dice()
+    if selection == "roll":
+        if rollsLeft > 0:
+            print "Rolling dice"
+            roll_dice()
+        else:
+            print "You can not roll anymore"
     elif selection == 'quit':
         print "Thanks for playing."
         sys.exit(0)
