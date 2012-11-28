@@ -12,8 +12,8 @@ def prompt():
     global rollsLeft
 
     print "Choices:"
-    print "roll - roll the dice (You have " + str(rollsLeft) + " left)"
-    print "quit - quit the game"
+    print "(1) Roll - roll the dice (You have " + str(rollsLeft) + " left)"
+    print "(2) Quit - quit the game"
     selection = raw_input('Selection: ')
 
 def roll_dice():
@@ -39,12 +39,12 @@ setup_game()
 while True:
     prompt()
 
-    if selection == "roll":
+    if selection == '1':
         if rollsLeft > 0:
             print "Rolling dice"
             roll_dice()
         else:
             print "You can not roll anymore"
-    elif selection == 'quit':
+    elif selection == '2':
         print "Thanks for playing."
         sys.exit(0)
