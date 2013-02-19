@@ -8,6 +8,22 @@ rollsLeft = 3
 rolls = [0, 0, 0, 0, 0]
 holds = [0, 0, 0, 0, 0]
 
+# scores
+aces = 0
+twos = 0
+threes = 0
+fours = 0
+fives = 0
+sixes = 0
+bonus = 0
+threeKind = 0
+fourKind = 0
+fullHouse = 0
+smallStraight = 0
+largeStraight = 0
+yahtzee = 0
+chance = 0
+
 # def setup_game():
     # print "Let's play Yahtzee!"
 
@@ -50,25 +66,45 @@ def create_scorecard():
 #     stdscr.getch()
 #     stdscr.endwin()
 
-    acesLabel = urwid.Text(u"Aces:", align='left')
-    twosLabel = urwid.Text(u"Twos:", align='left')
+    # upper section
+    acesLabel = urwid.Text(u"  Aces:", align='left')
+    twosLabel = urwid.Text(u"  Twos:", align='left')
     threesLabel = urwid.Text(u"Threes:", align='left')
-    foursLabel = urwid.Text(u"Fours:", align='left')
-    fivesLabel = urwid.Text(u"Fives:", align='left')
-    sixesLabel = urwid.Text(u"Sixes:", align='left')
-    bonusLabel = urwid.Text(u"Bonus:", align='left')
-    upperSectionWidgets = acesLabel, twosLabel, threesLabel, foursLabel, fivesLabel, sixesLabel, bonusLabel
+    foursLabel = urwid.Text(u" Fours:", align='left')
+    fivesLabel = urwid.Text(u" Fives:", align='left')
+    sixesLabel = urwid.Text(u" Sixes:", align='left')
+    bonusLabel = urwid.Text(u" Bonus:", align='left')
+
+    acesWidget = urwid.Columns([acesLabel, urwid.Text(str(aces), align='right')])
+    twosWidget = urwid.Columns([twosLabel, urwid.Text(str(twos), align='right')])
+    threesWidget = urwid.Columns([threesLabel, urwid.Text(str(threes), align='right')])
+    foursWidget = urwid.Columns([foursLabel, urwid.Text(str(fours), align='right')])
+    fivesWidget = urwid.Columns([fivesLabel, urwid.Text(str(fives), align='right')])
+    sixesWidget = urwid.Columns([sixesLabel, urwid.Text(str(sixes), align='right')])
+    bonusWidget = urwid.Columns([bonusLabel, urwid.Text(str(bonus), align='right')])
+
+    upperSectionWidgets = [acesWidget, twosWidget, threesWidget, foursWidget, fivesWidget, sixesWidget, bonusWidget]
 
     upperSectionPile = urwid.Pile(upperSectionWidgets)
 
+    # lower section
     threeKindLabel = urwid.Text(u"Three of a Kind:", align='left')
-    fourKindLabel = urwid.Text(u"Four of a Kind:", align='left')
-    fullHouseLabel = urwid.Text(u"Full House:", align='left')
-    smallStraightLabel = urwid.Text(u"Small Straight:", align='left')
-    largeStraightLabel = urwid.Text(u"Large Straight:", align='left')
-    yahtzeeLabel = urwid.Text(u"Yahtzee:", align='left')
-    chanceLabel = urwid.Text(u"Chance:", align='left')
-    lowerSectionWidgets = threeKindLabel, fourKindLabel, fullHouseLabel, smallStraightLabel, largeStraightLabel, yahtzeeLabel, chanceLabel
+    fourKindLabel = urwid.Text(u" Four of a Kind:", align='left')
+    fullHouseLabel = urwid.Text(u"     Full House:", align='left')
+    smallStraightLabel = urwid.Text(u" Small Straight:", align='left')
+    largeStraightLabel = urwid.Text(u" Large Straight:", align='left')
+    yahtzeeLabel = urwid.Text(u"        Yahtzee:", align='left')
+    chanceLabel = urwid.Text(u"         Chance:", align='left')
+    
+    threeKindWidget = urwid.Columns([threeKindLabel, urwid.Text(str(threeKind), align='right')])
+    fourKindWidget = urwid.Columns([fourKindLabel, urwid.Text(str(fourKind), align='right')])
+    fullHouseWidget = urwid.Columns([fullHouseLabel, urwid.Text(str(fullHouse), align='right')])
+    smallStraightWidget = urwid.Columns([smallStraightLabel, urwid.Text(str(smallStraight), align='right')])
+    largeStraightWidget = urwid.Columns([largeStraightLabel, urwid.Text(str(largeStraight), align='right')])
+    yahtzeeWidget = urwid.Columns([yahtzeeLabel, urwid.Text(str(yahtzee), align='right')])
+    chanceWidget = urwid.Columns([chanceLabel, urwid.Text(str(chance), align='right')])
+    
+    lowerSectionWidgets = [threeKindWidget, fourKindWidget, fullHouseWidget, smallStraightWidget, largeStraightWidget, yahtzeeWidget, chanceWidget]
 
     lowerSectionPile = urwid.Pile(lowerSectionWidgets)
     
