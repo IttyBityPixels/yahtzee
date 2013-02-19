@@ -50,8 +50,35 @@ def create_scorecard():
 #     stdscr.getch()
 #     stdscr.endwin()
 
-    txt = urwid.Text(u"Hello World", align='center')
-    fill = urwid.Filler(txt, 'top')
+    acesLabel = urwid.Text(u"Aces:", align='left')
+    twosLabel = urwid.Text(u"Twos:", align='left')
+    threesLabel = urwid.Text(u"Threes:", align='left')
+    foursLabel = urwid.Text(u"Fours:", align='left')
+    fivesLabel = urwid.Text(u"Fives:", align='left')
+    sixesLabel = urwid.Text(u"Sixes:", align='left')
+    bonusLabel = urwid.Text(u"Bonus:", align='left')
+    upperSectionWidgets = acesLabel, twosLabel, threesLabel, foursLabel, fivesLabel, sixesLabel, bonusLabel
+
+    upperSectionPile = urwid.Pile(upperSectionWidgets)
+
+    threeKindLabel = urwid.Text(u"Three of a Kind:", align='left')
+    fourKindLabel = urwid.Text(u"Four of a Kind:", align='left')
+    fullHouseLabel = urwid.Text(u"Full House:", align='left')
+    smallStraightLabel = urwid.Text(u"Small Straight:", align='left')
+    largeStraightLabel = urwid.Text(u"Large Straight:", align='left')
+    yahtzeeLabel = urwid.Text(u"Yahtzee:", align='left')
+    chanceLabel = urwid.Text(u"Chance:", align='left')
+    lowerSectionWidgets = threeKindLabel, fourKindLabel, fullHouseLabel, smallStraightLabel, largeStraightLabel, yahtzeeLabel, chanceLabel
+
+    lowerSectionPile = urwid.Pile(lowerSectionWidgets)
+    
+    upperSection = urwid.LineBox(upperSectionPile, title='Upper Section')
+    lowerSection = urwid.LineBox(lowerSectionPile, title='Lower Section')
+
+    sections = upperSection, lowerSection
+    columns = urwid.Columns(sections)
+
+    fill = urwid.Filler(columns, 'top')
     loop = urwid.MainLoop(fill)
     loop.run()
 
